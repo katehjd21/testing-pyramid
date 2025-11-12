@@ -1,7 +1,9 @@
 from flask import Flask,render_template
-
+from controllers.duty import DutyController
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    duty = DutyController().get_duty()
+    return render_template("random_duty.html", duty=duty) 
+    
